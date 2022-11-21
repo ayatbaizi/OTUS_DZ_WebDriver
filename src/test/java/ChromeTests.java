@@ -64,7 +64,7 @@ public class ChromeTests extends BaseTest {
 
       //Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
       driver.findElement(By.cssSelector(buttonEnterLocator)).click();
-      checkClickVisible(By.cssSelector("div.new-input-line_slim:nth-child(3) > input:nth-child(1)"));
+      waitClickVisible(By.cssSelector("div.new-input-line_slim:nth-child(3) > input:nth-child(1)"));
       driver.findElement(By.cssSelector("div.new-input-line_slim:nth-child(3) > input:nth-child(1)")).sendKeys(userName);
       driver.findElement(By.cssSelector(".js-psw-input")).sendKeys(userPassword);
       driver.findElement(By.cssSelector("div.new-input-line_last:nth-child(5) > button:nth-child(1)")).click();

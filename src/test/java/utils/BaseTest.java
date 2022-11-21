@@ -32,8 +32,8 @@ public class BaseTest {
          driver.quit();
    }
 
-   public void checkClickVisible(By element){
-      WebDriverWait wait = new WebDriverWait(driver,  Duration.ofSeconds(10));
+   public void waitClickVisible(By element){
+      WebDriverWait wait = new WebDriverWait(driver,  Duration.ofSeconds(5));
       wait.until(ExpectedConditions.elementToBeClickable(element));
       wait.until(ExpectedConditions.visibilityOfElementLocated(element));
       driver.findElement(element).click();
