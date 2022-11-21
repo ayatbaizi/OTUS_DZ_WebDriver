@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import utils.BaseTest;
 
+
+
 public class ChromeTests extends BaseTest {
    @Test
    public void duckduckgoSearchingTest(){
@@ -26,7 +28,7 @@ public class ChromeTests extends BaseTest {
    }
 
    @Test
-   public void chromeKioskModeTest(){
+   public void chromeKioskModeTest() {
       // Открыть Chrome в режиме киоска
       startKioskMode();
       logger.info("хром запушен в режиме киоска");
@@ -62,9 +64,10 @@ public class ChromeTests extends BaseTest {
 
       //Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
       driver.findElement(By.cssSelector(buttonEnterLocator)).click();
+      checkClickVisible(By.cssSelector("div.new-input-line_slim:nth-child(3) > input:nth-child(1)"));
       driver.findElement(By.cssSelector("div.new-input-line_slim:nth-child(3) > input:nth-child(1)")).sendKeys(userName);
       driver.findElement(By.cssSelector(".js-psw-input")).sendKeys(userPassword);
-      driver.findElement(By.cssSelector("div.new-input-line_last:nth-child(5) > button:nth-child(1)")).submit();
+      driver.findElement(By.cssSelector("div.new-input-line_last:nth-child(5) > button:nth-child(1)")).click();
       logger.info("Авторизация прошла успешно");
       logger.info("Все куки: \n" + driver.manage().getCookies());
    }
