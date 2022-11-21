@@ -7,7 +7,6 @@ public class ChromeTests extends BaseTest {
    @Test
    public void duckduckgoSearchingTest(){
 
-
       //Открыть Chrome в headless режиме
       startHeadlessMode();
 
@@ -18,7 +17,7 @@ public class ChromeTests extends BaseTest {
       //В поисковую строку ввести ОТУС
       driver.findElement(By.id("search_form_input_homepage")).sendKeys("ОТУС");
       driver.findElement(By.id("search_button_homepage")).click();
-      String firstResult =  driver.findElement(By.xpath("//*[@id='r1-0']//h2")).getText();
+      String firstResult = driver.findElement(By.xpath("//*[@id='r1-0']/div[2]/h2/a/span")).getText();
       logger.info("ввод данных в поисковую строку выполнен, поиск выполнен");
 
       //Проверить что в поисковой выдаче первый результат Онлайн‑курсы для профессионалов, дистанционное обучение
@@ -47,10 +46,11 @@ public class ChromeTests extends BaseTest {
    }
 
    @Test
-   public void autharzationOtusTest(){
-      String login = "mofosi1740@invodua.com";
-      String password = "uto_2295";
-      String buttonEnterLocator = "button.header2__auth.js-open-modal";
+   public void authTest(){
+
+      final String userName = System.getProperty("login");
+      final String userPassword = System.getProperty("password");
+      final String buttonEnterLocator = "button.header2__auth.js-open-modal";
       //Открыть Chrome в режиме полного экрана
       startDefaultMode();
       driver.manage().window().maximize();
@@ -62,8 +62,8 @@ public class ChromeTests extends BaseTest {
 
       //Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
       driver.findElement(By.cssSelector(buttonEnterLocator)).click();
-      driver.findElement(By.cssSelector("div.new-input-line_slim:nth-child(3) > input:nth-child(1)")).sendKeys(login);
-      driver.findElement(By.cssSelector(".js-psw-input")).sendKeys(password);
+      driver.findElement(By.cssSelector("div.new-input-line_slim:nth-child(3) > input:nth-child(1)")).sendKeys(userName);
+      driver.findElement(By.cssSelector(".js-psw-input")).sendKeys(userPassword);
       driver.findElement(By.cssSelector("div.new-input-line_last:nth-child(5) > button:nth-child(1)")).submit();
       logger.info("Авторизация прошла успешно");
       logger.info("Все куки: \n" + driver.manage().getCookies());
