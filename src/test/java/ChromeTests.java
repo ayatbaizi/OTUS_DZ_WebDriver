@@ -36,11 +36,11 @@ public class ChromeTests extends BaseTest {
       logger.info("переход на https://demo.w3layouts.com/... выполнен");
 
       // Нажать на любую картинку
-      driver.findElement(By.xpath("(//div[contains(@class, 'content-overlay')])[1]")).click();
+      driver.findElement(By.cssSelector(".content-overlay")).click();
       logger.info("нажатие на картинку выполненно");
 
       // Проверить что картинка открылась в модальном окне
-      Assertions.assertTrue(driver.findElement(By.xpath("//div[contains(@class, 'pp_overlay')]")).isDisplayed());
+      Assertions.assertTrue(driver.findElement(By.cssSelector(".pp_overlay")).isDisplayed());
       logger.info("картинка открывается в модальном окне");
 
    }
